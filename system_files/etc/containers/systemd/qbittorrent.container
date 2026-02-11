@@ -1,0 +1,23 @@
+[Unit]
+After=tailscaled.service gluetun.service
+Requires=gluetun.service
+Wants=tailscaled.service
+
+[Container]
+AutoUpdate=registry
+Entrypoint=["/entrypoint.sh"]
+Environment=QBT_LEGAL_NOTICE=confirm
+Image=ghcr.io/qbittorrent/docker-qbittorrent-nox:latest
+Mount=type=bind,source=/srv/film,destination=/srv/film,relabel=shared
+Mount=type=volume,source=qbittorrent.volume,destination=/config/qBittorrent,chown=true
+Network=container:gluetun
+NoNewPrivileges=true
+PodmanArgs=--umask=0002
+ReadOnly=true
+StopTimeout=20
+User=1000:995
+UserNS=auto:gidmapping=995:995
+
+[Service]
+ExecStartPost=/usr/bin/tailscale serve --service=svc:qbittorrent --bg --yes 8080
+TimeoutStopSec=20

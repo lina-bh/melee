@@ -1,0 +1,19 @@
+[Unit]
+After=tailscaled.service
+Wants=tailscaled.service
+
+[Container]
+Exec=--grp owner:lina-bh@github -v /srv/film:/film:r. -v /srv/Music:/Music:r.:rwda.,@owner -v /srv/downloads:/downloads:r.:rd.,@owner --rproxy=-1 --xff-src=lan --ipar=100.64.0.0/10 --http-only --s-tbody=0 --idp-h-usr=Tailscale-User-Login --idp-store=0 --chmod-f=664 --chmod-d=775 -e2ts -e2ds --hist=/cfg/.hist --xvol --th-spec-p=0 --vol-or-crash --au-vol=100 --qdel 1 -nih --no-hash=.
+Image=ghcr.io/9001/copyparty-ac:latest
+Mount=type=bind,source=/srv/film,destination=/srv/film,relabel=shared,readonly=true
+Mount=type=bind,source=/srv/Music,destination=/srv/Music,relabel=shared
+Mount=type=bind,source=/srv/downloads,destination=/srv/downloads,relabel=shared
+Mount=type=volume,source=copyparty.volume,destination=/cfg,chown=true
+Mount=type=tmpfs,destination=/tmp
+PodmanArgs=--uts=host
+PublishPort=127.0.0.1:3923:3923/tcp
+User=1000:995
+UserNS=auto:gidmapping=995:995
+
+[Service]
+#ExecStartPost=/usr/bin/tailscale serve --bg --yes 3923

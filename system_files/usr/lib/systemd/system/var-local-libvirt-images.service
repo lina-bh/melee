@@ -1,0 +1,4 @@
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/mkdir -p /var/local/libvirt/images
+RemainAfterExit=yes

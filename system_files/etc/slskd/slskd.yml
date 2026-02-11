@@ -1,0 +1,4 @@
+global:
+  limits:
+    daily:
+      failures: 1

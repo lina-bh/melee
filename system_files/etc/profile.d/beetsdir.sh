@@ -1,0 +1,1 @@
+export BEETSDIR='/etc/beets'

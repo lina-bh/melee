@@ -1,0 +1,9 @@
+gui:
+  terminal:
+    start_path: "/srv/downloads" # the directory where to start new terminal sessions
+  inbox:
+    folders:
+      slskd:
+        name: "/srv/downloads"
+        path: "/srv/downloads"
+        autotag: no

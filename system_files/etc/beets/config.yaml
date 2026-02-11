@@ -1,0 +1,43 @@
+# vim:ft=yaml:sw=2:sts=2:et
+directory: /srv/Music
+library: /srv/Music/musiclibrary.db
+original_date: yes
+import:
+  move: true
+  write: true
+  resume: true
+plugins:
+  - musicbrainz
+  - ftintitle
+  - inline
+  - embedart
+  - unimported
+  - fetchart
+  - permissions
+  - replaygain
+  - scrub
+ftintitle:
+  format: (feat. {0})
+item_fields:
+  multidisc: 1 if disctotal > 1 else 0
+paths:
+  default: $albumartist - $album%aunique{}/%if{$multidisc,$disc-}$track. $title
+unimported:
+  ignore_extensions: db
+embedart: {}
+  # remove_art_file: true
+permissions:
+  dir: 775
+  file: 664
+replaygain:
+# auto: no
+  backend: ffmpeg
+  threads: 4
+  peak: sample
+fetchart:
+  sources: filesystem lastfm amazon albumart coverart
+  lastfm_key: 513b4f46ab3ecbe1b1d9a9b51ddb46d4
+  store_source: yes
+  enforce_ratio: yes
+  deinterlace: yes
+# parallel_on_import: yes

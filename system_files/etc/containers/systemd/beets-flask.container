@@ -1,0 +1,18 @@
+[Unit]
+After=tailscaled.service
+Wants=tailscaled.service
+
+[Container]
+Entrypoint=["/bin/sh", "/repo/entrypoint.sh"]
+Image=ghcr.io/pspitzner/beets-flask:stable
+Mount=type=bind,source=/srv/Music,destination=/srv/Music,relabel=shared
+Mount=type=bind,source=/srv/downloads,destination=/srv/downloads,relabel=shared
+Mount=type=bind,source=/etc/beets/config.yaml,destination=/config/beets/config.yaml,relabel=private,chown=true
+Mount=type=bind,source=/etc/beets-flask/config.yaml,destination=/config/beets-flask/config.yaml,relabel=private,chown=true
+PublishPort=127.0.0.1:5001:5001/tcp
+StopSignal=SIGKILL
+User=1000:995
+UserNS=auto:gidmapping=995:995
+
+[Service]
+ExecStartPost=/usr/bin/tailscale serve --bg --yes --service=svc:b 5001

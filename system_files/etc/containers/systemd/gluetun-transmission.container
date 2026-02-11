@@ -1,0 +1,6 @@
+[Container]
+ContainerName=gluetun-transmission
+Environment=FIREWALL_VPN_INPUT_PORTS=14148
+Environment=SERVER_COUNTRIES="Austria,Belgium,Czech Republic,Germany,Spain,Ireland,Latvia,Estonia,Netherlands,Norway,Romania,Serbia,Sweden"
+PublishPort=127.0.0.1:9091:9091/tcp
+PublishPort=127.0.0.1:9696:9696/tcp
