@@ -28,6 +28,9 @@ RUN --mount=type=cache,destination=/var/cache \
         beets \
         btrfs-progs \
         cockpit-{files,machines,networkmanager,storaged,system} \
+        containernetworking-plugins \
+        'cri-o1.35' \
+        cri-tools \
         distrobox \
         ffmpeg \
         git-core \
@@ -48,7 +51,8 @@ RUN --mount=type=cache,destination=/var/cache \
         libvirt-daemon-driver-storage-logical \
         libvirt-nss \
         udisks2{,-btrfs,-lvm2} \
-    && :
+        && \
+    systemctl enable crio.service
 
 COPY ./system_files/ /
 
