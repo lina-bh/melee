@@ -1,0 +1,31 @@
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "0 0 * * *" # daily at midnight
+  workflow_dispatch:
+jobs:
+  build:
+    name: Build and push ghcr.io/${{ github.repository }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    env:
+      IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+      TAG: ghcr.io/${{ github.repository }}
+    steps:
+    - name: Log in to ghcr.io
+      uses: redhat-actions/podman-login@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ github.token }}
+        registry: ${{ env.IMAGE_REGISTRY }}
+    - uses: actions/checkout@v4
+    - name: Build ${{ env.TAG }}
+      run: make build NAME=${{ env.TAG }} EXTRA_BUILD_ARGS='--label=org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}'
+    - name: Tag commit
+      run: podman tag ${{ env.TAG }}:latest ${{ env.TAG }}:$(git rev-parse HEAD)
+    - name: Push To GHCR
+      run: make push
