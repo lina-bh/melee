@@ -16,7 +16,7 @@ RUN echo 'containers:524288:65536' > /etc/subuid && \
     echo 'containers:524288:65536' > /etc/subgid && \
     setsebool -P container_use_dri_devices=1 container_use_devices=1
 
-COPY ./packages /tmp/packages
+COPY ./build_files/packages /tmp/packages
 RUN --mount=type=cache,destination=/var/cache \
     --mount=type=cache,destination=/var/lib/dnf \
     --mount=type=tmpfs,destination=/var/log \
