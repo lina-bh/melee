@@ -25,9 +25,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build ghcr.io/${{ github.repository }}:latest
       run: make build NAME=${{ env.NAME }} EXTRA_BUILD_ARGS='--label=org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}'
-    - name: Tag ${{ github.sha }}
-      run: make tag NAME=${{ env.NAME }} TAG=$(git rev-parse HEAD)
     - name: Push latest
       run: make push NAME=${{ env.NAME }}
     - name: Push ${{ github.sha }}
-      run: make push NAME=${{ env.NAME }} TAG=$(git rev-parse HEAD)
+      run: make push_HEAD NAME=${{ env.NAME }}
