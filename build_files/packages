@@ -16,6 +16,7 @@ netcat
 pciutils
 pipx
 python3-devel
+python3-pillow
 qemu-char-spice
 rsync
 usbutils
