@@ -29,4 +29,7 @@ RUN --mount=type=cache,destination=/var/cache \
 
 COPY ./system_files/ /
 
+RUN ln -sf /var/usrlocal /usr/local && \
+    ln -sf /var/opt /opt
+
 RUN bootc container lint
