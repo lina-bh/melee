@@ -13,4 +13,5 @@ mkdir -p /opt/cni/bin
 # --setopt=kubernetes.enabled=1
 exec dnf5 -y install \
   "cri-o${KUBERNETES_RELEASE}" \
-  "kubernetes${KUBERNETES_RELEASE}-kubeadm"
+  "kubernetes${KUBERNETES_RELEASE}-kubeadm" \
+  helm
