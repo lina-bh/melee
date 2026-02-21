@@ -23,11 +23,13 @@ RUN --mount=type=cache,destination=/var/cache \
     dnf5 -y --setopt=install_weak_deps=False install $(cat /tmp/packages)
 
 ENV KUBERNETES_RELEASE=1.35
-COPY ./build_files/k8s.sh /tmp/k8s.sh
 RUN --mount=type=cache,destination=/var/cache \
     --mount=type=cache,destination=/var/lib/dnf \
     --mount=type=tmpfs,destination=/var/log \
-    sh /tmp/k8s.sh
+    dnf5 -y install \
+        "cri-o${KUBERNETES_RELEASE}" \
+        "kubernetes${KUBERNETES_RELEASE}-kubeadm" \
+        helm
 
 COPY ./system_files/ /
 
