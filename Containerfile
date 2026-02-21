@@ -12,7 +12,9 @@ RUN --mount=type=cache,destination=/var/cache \
     dnf5 -y config-manager setopt 'tailscale*'.enabled=0 && \
     dnf5 -y --setopt='tailscale*'.enabled=1 install tailscale
 
-RUN setsebool -P container_use_dri_devices=1 container_use_devices=1
+RUN rm -r /opt && ln -s /var/opt /opt && \
+    rm -r /usr/local && ln -s /var/usrlocal /usr/local && \
+    setsebool -P container_use_dri_devices=1 container_use_devices=1
 
 COPY ./build_files/packages /tmp/packages
 RUN --mount=type=cache,destination=/var/cache \
@@ -29,7 +31,5 @@ RUN --mount=type=cache,destination=/var/cache \
 
 COPY ./system_files/ /
 
-RUN ln -sf /var/usrlocal /usr/local && \
-    ln -sf /var/opt /opt
 
 RUN bootc container lint
