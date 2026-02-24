@@ -1,3 +1,0 @@
-[Container]
-ContainerName=gluetun-airvpn-exit-node
-Environment=SERVER_COUNTRIES="Austria,Belgium,Switzerland,Spain,Ireland,Latvia,Estonia,Netherlands,Norway,Romania,Serbia,Sweden"
