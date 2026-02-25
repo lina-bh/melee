@@ -6,9 +6,19 @@
   "packageRules": [
     {
       "matchDatasources": ["docker"],
-      "matchPackageNames": ["quay.io/fedora/fedora-bootc"],
+      "matchPackageNames": ["quay.io/fedora/fedora-iot"],
       "versioning": "loose"
-    }
+    },
+    {
+      "enabled": "false",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["quay.io/fedora/fedora-iot"],
+      "matchUpdateTypes": ["major"]
+    },
+    {
+      "matchDatasources": ["docker", "kubernetes", "kustomize"],
+      "pinDigests": true
+    },
   ],
   "kubernetes": {
     "managerFilePatterns": ["/^system_files/etc/kubernetes/manifests/etcd\\.yaml$/"]
