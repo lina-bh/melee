@@ -2,6 +2,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/build.yml
+      - Containerfile
+      - Makefile
+      - build_files
+      - system_files
   schedule:
     - cron: "0 0 * * *" # daily at midnight
   workflow_dispatch:
