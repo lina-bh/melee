@@ -3,7 +3,6 @@
     path: ~/.kube/config
     state: absent
 - name: Stop kubelet
-  become: true
   systemd_service:
     name: kubelet.service
     state: stopped
@@ -28,19 +27,22 @@
     src: "/usr{{ item }}"
     dest: "{{ item }}"
     force: true
-- name: /etc/kubernetes/manifests
-  become: true
-  file:
-    path: /etc/kubernetes/manifests
-    state: directory
-- name: /etc/kubernetes/manifests/etcd.yaml
-  become: true
-  copy:
-    src: ./etcd.yaml
-    dest: /etc/kubernetes/manifests/etcd.yaml
+- name: Restart CRI-O
+  systemd_service:
+    name: crio.service
+    state: restarted
+- name: Temporary kubeadm config file
+  register: tmp
+  tempfile:
+- name: Template kubeadm config file
+  template:
+    src: configuration.kubeadm.k8s.io.yaml.j2
+    dest: "{{ tmp.path }}"
 - name: kubeadm init
   become: true
   command: kubeadm init --config="{{ tmp.path }}"
+# - name: Copy /etc/kubernetes/admin.conf to unprivileged user
+#   become: true
 - name: Scale coredns to 1
   become: true
   command: kubectl --config=/etc/kubernetes/admin.conf --namespace=kube-system scale --replicas=1 deployment coredns

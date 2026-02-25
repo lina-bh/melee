@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: navidrome
+spec:
+  replicas: 1
+  template:
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 971
+        runAsGroup: 971
+      containers:
+      - envFrom:
+        - configMapRef:
+            name: env
+            optional: false
+        image: ghcr.io/navidrome/navidrome:latest
+        name: navidrome
+        ports:
+        - containerPort: 4533
+        volumeMounts:
+        - mountPath: /music
+          name: music
+          readOnly: true
+          recursiveReadOnly: IfPossible
+        - name: data
+          mountPath: /data
+        - name: cache
+          mountPath: /data/cache
+        - name: tmp
+          mountPath: /tmp
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 4533
+        readinessProbe:
+          httpGet:
+            path: /ping
+            port: 4533
+        securityContext:
+          allowPrivilegeEscalation: false
+          readOnlyRootFilesystem: true
+          capabilities:
+            drop:
+              - ALL
+      volumes:
+        - name: data
+          hostPath:
+            path: /var/lib/navidrome
+            type: DirectoryOrCreate
+        - name: music
+          hostPath:
+            path: /srv/Music
+            type: Directory
+        - name: cache
+          emptyDir: {}
+        - name: tmp
+          emptyDir:
+            medium: Memory

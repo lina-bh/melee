@@ -7,15 +7,9 @@
       register: pki_ca_key
       stat:
         path: /etc/kubernetes/pki/ca.key
-    - name: Temporary kubeadm config file
-      register: tmp
-      tempfile:
-    - name: Template kubeadm config file
-      template:
-        src: ./configuration.kubeadm.k8s.io.yaml.j2
-        dest: "{{ tmp.path }}"
     - when: not pki_ca_key.stat.exists
-      include_tasks: kubeadm-init.yaml
+      include_role:
+        name: kubeadm-init
     - name: Enable kubelet
       systemd_service:
         name: kubelet.service

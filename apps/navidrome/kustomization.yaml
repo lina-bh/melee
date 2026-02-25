@@ -1,0 +1,13 @@
+namespace: navidrome
+labels:
+- pairs:
+    app: navidrome
+  includeSelectors: true
+resources:
+- deployment.yaml
+- service.yaml
+- ingress.yaml
+configMapGenerator:
+- name: env
+  envs:
+  - env.sh

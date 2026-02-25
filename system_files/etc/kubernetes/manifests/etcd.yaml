@@ -13,46 +13,13 @@ spec:
   - command:
     - kine
     - --listen-address=127.0.0.1:2379
+    - --metrics-bind-address=127.0.0.1:2381
     - --server-cert-file=/etc/kubernetes/pki/etcd/server.crt
     - --server-key-file=/etc/kubernetes/pki/etcd/server.key
     - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
     image: ghcr.io/k3s-io/kine:latest
-    imagePullPolicy: IfNotPresent
-    # livenessProbe:
-    #   failureThreshold: 8
-    #   httpGet:
-    #     host: 127.0.0.1
-    #     path: /livez
-    #     port: probe-port
-    #     scheme: HTTP
-    #   initialDelaySeconds: 10
-    #   periodSeconds: 10
-    #   timeoutSeconds: 15
+    imagePullPolicy: Always
     name: kine
-    # ports:
-    # - containerPort: 2381
-    #   name: probe-port
-    #   protocol: TCP
-    # readinessProbe:
-    #   failureThreshold: 3
-    #   tcpSocket:
-    #     port: 2379
-    #   periodSeconds: 1
-    #   timeoutSeconds: 15
-    # resources:
-    #   requests:
-    #     cpu: 100m
-    #     memory: 100Mi
-    # startupProbe:
-    #   failureThreshold: 24
-    #   httpGet:
-    #     host: 127.0.0.1
-    #     path: /readyz
-    #     port: probe-port
-    #     scheme: HTTP
-    #   initialDelaySeconds: 10
-    #   periodSeconds: 10
-    #   timeoutSeconds: 15
     volumeMounts:
     - mountPath: /db
       name: etcd-data
