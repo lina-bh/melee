@@ -17,8 +17,8 @@ spec:
     - --server-cert-file=/etc/kubernetes/pki/etcd/server.crt
     - --server-key-file=/etc/kubernetes/pki/etcd/server.key
     - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
-    image: ghcr.io/k3s-io/kine:latest
-    imagePullPolicy: Always
+    image: ghcr.io/k3s-io/kine:v0.14.12
+    imagePullPolicy: IfNotPresent
     name: kine
     volumeMounts:
     - mountPath: /db
