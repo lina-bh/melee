@@ -11,21 +11,8 @@
       "matchPackageNames": [
         "quay.io/fedora/fedora-iot"
       ],
-      "versioning": "loose"
-    },
-    {
       "enabled": false,
-      "matchDatasources": [
-        "docker"
-      ],
-      "matchPackageNames": [
-        "quay.io/fedora/fedora-iot"
-      ],
-      "matchUpdateTypes": [
-        "major",
-        "minor",
-        "patch"
-      ]
+      "pinDigests": false
     },
     {
       "matchDatasources": [
