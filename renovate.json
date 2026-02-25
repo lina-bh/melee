@@ -22,5 +22,6 @@
   ],
   "kubernetes": {
     "managerFilePatterns": ["/^system_files/etc/kubernetes/manifests/etcd\\.yaml$/"]
-  }
+  },
+  "prHourlyLimit": 0
 }
