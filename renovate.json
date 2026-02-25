@@ -9,5 +9,8 @@
       "matchPackageNames": ["quay.io/fedora/fedora-bootc"],
       "versioning": "loose"
     }
-  ]
+  ],
+  "kubernetes": {
+    "managerFilePatterns": ["/^system_files/etc/kubernetes/manifests/etcd.yaml"]
+  }
 }
