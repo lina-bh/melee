@@ -1,0 +1,46 @@
+- name: Delete old kubeconfig
+  file:
+    path: ~/.kube/config
+    state: absent
+- name: Stop kubelet
+  become: true
+  systemd_service:
+    name: kubelet.service
+    state: stopped
+- name: Delete kubernetes directories
+  become: true
+  with_items:
+    - /etc/cni
+    - /etc/kubernetes
+    - /opt/cni
+    - /opt/libexec/kubernetes
+    - /var/lib/etcd
+  file:
+    path: "{{ item }}"
+    state: absent
+- name: Copy defaults
+  become: true
+  with_items:
+    - /etc/cni
+    - /etc/kubernetes
+  copy:
+    remote_src: true
+    src: "/usr{{ item }}"
+    dest: "{{ item }}"
+    force: true
+- name: /etc/kubernetes/manifests
+  become: true
+  file:
+    path: /etc/kubernetes/manifests
+    state: directory
+- name: /etc/kubernetes/manifests/etcd.yaml
+  become: true
+  copy:
+    src: ./etcd.yaml
+    dest: /etc/kubernetes/manifests/etcd.yaml
+- name: kubeadm init
+  become: true
+  command: kubeadm init --config="{{ tmp.path }}"
+- name: Scale coredns to 1
+  become: true
+  command: kubectl --config=/etc/kubernetes/admin.conf --namespace=kube-system scale --replicas=1 deployment coredns
