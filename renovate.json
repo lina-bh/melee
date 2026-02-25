@@ -13,7 +13,7 @@
       "enabled": "false",
       "matchDatasources": ["docker"],
       "matchPackageNames": ["quay.io/fedora/fedora-iot"],
-      "matchUpdateTypes": ["major"]
+      "matchUpdateTypes": ["major", "minor", "patch"]
     },
     {
       "matchDatasources": ["docker", "kubernetes", "kustomize"],
@@ -21,7 +21,7 @@
     },
   ],
   "kubernetes": {
-    "managerFilePatterns": ["/^system_files/etc/kubernetes/manifests/etcd\\.yaml$/"]
+    "managerFilePatterns": ["/^system_files/etc/kubernetes/manifests/.+\\.yaml$/"]
   },
   "prHourlyLimit": 0
 }
