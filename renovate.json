@@ -11,6 +11,6 @@
     }
   ],
   "kubernetes": {
-    "managerFilePatterns": ["/^system_files/etc/kubernetes/manifests/etcd.yaml"]
+    "managerFilePatterns": ["/^system_files/etc/kubernetes/manifests/etcd\\.yaml$/"]
   }
 }
