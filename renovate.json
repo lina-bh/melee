@@ -40,7 +40,7 @@
   "kubernetes": {
     "managerFilePatterns": [
       "/^system_files/etc/kubernetes/manifests/.+\\.yaml$/",
-      "/^apps/.+\\.ya?ml$"
+      "/^apps/.+\\.ya?ml$/"
     ]
   },
   "prHourlyLimit": 0
