@@ -31,7 +31,8 @@
       "matchDatasources": [
         "docker",
         "kubernetes",
-        "kustomize"
+        "kustomize",
+        "github-actions"
       ],
       "pinDigests": true
     }
