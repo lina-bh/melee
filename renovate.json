@@ -5,23 +5,41 @@
   ],
   "packageRules": [
     {
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["quay.io/fedora/fedora-iot"],
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "quay.io/fedora/fedora-iot"
+      ],
       "versioning": "loose"
     },
     {
-      "enabled": "false",
-      "matchDatasources": ["docker"],
-      "matchPackageNames": ["quay.io/fedora/fedora-iot"],
-      "matchUpdateTypes": ["major", "minor", "patch"]
+      "enabled": false,
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "quay.io/fedora/fedora-iot"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch"
+      ]
     },
     {
-      "matchDatasources": ["docker", "kubernetes", "kustomize"],
+      "matchDatasources": [
+        "docker",
+        "kubernetes",
+        "kustomize"
+      ],
       "pinDigests": true
-    },
+    }
   ],
   "kubernetes": {
-    "managerFilePatterns": ["/^system_files/etc/kubernetes/manifests/.+\\.yaml$/"]
+    "managerFilePatterns": [
+      "/^system_files/etc/kubernetes/manifests/.+\\.yaml$/"
+    ]
   },
   "prHourlyLimit": 0
 }
