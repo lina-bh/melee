@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: navidrome
   annotations:
-    tailscale.com/funnel: "false"
+    tailscale.com/funnel: "true"
 spec:
   defaultBackend:
     service:

@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  namespace: monitoring
+  name: slskd
+spec:
+  namespaceSelector:
+    matchNames:
+    - slskd
+  selector:
+    matchLabels:
+      app: slskd
+  podMetricsEndpoints:
+  - portNumber: 5030

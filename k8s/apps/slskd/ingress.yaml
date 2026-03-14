@@ -1,0 +1,18 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: s
+  annotations:
+    tailscale.com/proxy-group: melee-svc
+spec:
+  ingressClassName: tailscale
+  tls:
+    - hosts:
+      - s
+  defaultBackend:
+    service:
+      name: frontend
+      port:
+        number: 80
+

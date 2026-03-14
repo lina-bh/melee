@@ -1,0 +1,31 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  namespace: flux-system
+  name: tailscale
+spec:
+  url: https://pkgs.tailscale.com/helmcharts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  namespace: flux-system
+  name: tailscale-operator
+spec:
+  chart:
+    spec:
+      chart: tailscale-operator
+      sourceRef:
+        kind: HelmRepository
+        name: tailscale
+  releaseName: tailscale-operator
+  targetNamespace: tailscale
+  values:
+    operatorConfig:
+      image:
+        repository: ghcr.io/tailscale/k8s-operator
+        tag: latest
+      hostname: "melee-k8s"
+    proxyConfig:
+      image:
+        repository: ghcr.io/tailscale/tailscale

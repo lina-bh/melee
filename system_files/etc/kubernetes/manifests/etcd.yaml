@@ -6,6 +6,7 @@ metadata:
   labels:
     component: etcd
     tier: control-plane
+    app: kine
   name: kine
   namespace: kube-system
 spec:
@@ -13,13 +14,17 @@ spec:
   - command:
     - kine
     - --listen-address=127.0.0.1:2379
-    - --metrics-bind-address=127.0.0.1:2381
+    - --metrics-bind-address=0.0.0.0:2381
     - --server-cert-file=/etc/kubernetes/pki/etcd/server.crt
     - --server-key-file=/etc/kubernetes/pki/etcd/server.key
     - --trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt
     image: ghcr.io/k3s-io/kine:v0.14.15@sha256:74dbc3e5b4e2a7421f4fac732abc009a06795f9d6da868fb0c00b922b6bf02d2
     imagePullPolicy: IfNotPresent
     name: kine
+    ports:
+    - name: metrics
+      hostPort: 2381
+      containerPort: 2381
     volumeMounts:
     - mountPath: /db
       name: etcd-data

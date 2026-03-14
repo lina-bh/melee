@@ -1,0 +1,26 @@
+resources:
+  - toolkit.fluxcd.io_flux2.yaml
+  - toolkit.fluxcd.io_tailscale-operator.yaml
+  - toolkit.fluxcd.io_kube-prometheus-stack.yaml
+  - pv_srv.yaml
+patches:
+  - patch: |-
+      apiVersion: helm.toolkit.fluxcd.io/v2
+      kind: HelmRelease
+      metadata:
+        name: any
+      spec:
+        interval: 24h
+        install:
+          createNamespace: true
+    target:
+      kind: HelmRelease
+  - patch: |-
+      apiVersion: source.toolkit.fluxcd.io/v1
+      kind: OCIRepository
+      metadata:
+        name: any
+      spec:
+        interval: 24h
+    target:
+      kind: OCIRepository

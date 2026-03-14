@@ -1,0 +1,32 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: OCIRepository
+metadata:
+  name: flux2
+  namespace: flux-system
+spec:
+  url: oci://ghcr.io/fluxcd-community/charts/flux2
+  ref:
+    semver: "v2.x"
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: flux2
+  namespace: flux-system
+spec:
+  releaseName: flux2
+  chartRef:
+    kind: OCIRepository
+    name: flux2
+  values:
+    imageAutomationController:
+      create: false
+    imageReflectionController:
+      create: false
+    kustomizeController:
+      create: false
+    notificationController:
+      create: false
+    sourceWatcher:
+      create: false

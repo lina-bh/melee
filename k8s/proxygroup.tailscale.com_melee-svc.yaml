@@ -1,0 +1,8 @@
+apiVersion: tailscale.com/v1alpha1
+kind: ProxyGroup
+metadata:
+  namespace: tailscale
+  name: melee-svc
+spec:
+  type: ingress
+  replicas: 1

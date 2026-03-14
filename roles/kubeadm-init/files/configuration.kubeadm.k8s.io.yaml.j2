@@ -17,6 +17,12 @@ controllerManager:
   extraArgs:
   - name: "flex-volume-plugin-dir"
     value: "/opt/libexec/kubernetes/kubelet-plugins/volume/exec/"
+  - name: "bind-address"
+    value: "0.0.0.0"
+scheduler:
+  extraArgs:
+  - name: "bind-address"
+    value: "0.0.0.0"
 ---
 apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration

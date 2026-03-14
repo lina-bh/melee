@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  namespace: monitoring
+  name: navidrome
+spec:
+  namespaceSelector:
+    matchNames:
+    - navidrome
+  selector:
+    matchLabels:
+      app: navidrome
+  endpoints:
+  - port: web

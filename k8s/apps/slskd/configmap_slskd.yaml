@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: slskd
+data:
+  agent.yml: |
+    flags:
+      no_logo: true
+      no_version_check: true
+    shares:
+      directories:
+      - /srv/Music
+      filters:
+      - '.*/musiclibrary.db$'
+      - '.*/Tyler, The Creator - Flower Boy/.*'
+      - '.*/.+\.(png|jpg)'
+      cache:
+        storage_mode: disk
+    instance_name: agent
+    headless: true
+    web:
+      https:
+        disabled: true
+    relay:
+      enabled: true
+      mode: agent
+      controller:
+        address: http://controller:5030
+    metrics:
+      enabled: true
+      authentication:
+        disabled: true
+  controller.yml: |
+    flags:
+      no_logo: true
+      no_version_check: true
+    directories:
+      downloads: /srv/downloads
+    soulseek:
+      listen_port: 34977
+      description: "https://listenbrainz.org/user/WomenAndGamers/"
+    web:
+      https:
+        disabled: true
+      authentication:
+        disabled: true
+    groups:
+      blacklisted:
+        members:
+        - perrin
+        - footless4726
+        - lazara007
+        - NASferaturatyre
+        - arrjayjay
+        - SoularrFlare420
+        - albers.craniotomy
+        - vrrdnt
+        - mirko72
+        - teovader
+    integration:
+      vpn:
+        enabled: true
+        gluetun:
+          url: http://localhost:8000
+    instance_name: controller
+    relay:
+      enabled: true
+      mode: controller
+      agents:
+        agent:
+          instance_name: agent
+          secret: 4RSjR7IRfs95ZbR47xLYAL
+    metrics:
+      enabled: true
+      authentication:
+        disabled: true
