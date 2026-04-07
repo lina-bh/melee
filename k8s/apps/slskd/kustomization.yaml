@@ -11,7 +11,11 @@ resources:
 - ingress.yaml
 - pvc_srv.yaml
 - pvc_apk-cache.yaml
-- configmap_slskd.yaml
+configMapGenerator:
+- name: slskd
+  files:
+  - agent.yml
+  - controller.yml
 images:
 - name: slskd
   newName: ghcr.io/slskd/slskd

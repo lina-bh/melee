@@ -11,6 +11,7 @@ g++
 htop
 intel-gpu-firmware
 man-db
+mosh
 neovim
 netcat
 pciutils

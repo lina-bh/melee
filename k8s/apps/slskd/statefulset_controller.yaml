@@ -22,6 +22,26 @@ spec:
         runAsGroup: 995
         fsGroup: 995
       initContainers:
+      - name: snapshot
+        image: docker.io/library/alpine:3.23@sha256:25109184c71bdad752c8312a8623239686a9a2071e8825f20acb8f2198c3f659
+        securityContext:
+          runAsUser: 0
+          seLinuxOptions:
+            type: spc_t
+          capabilities:
+            drop:
+            - ALL
+            add:
+            - SYS_ADMIN
+        command:
+        - /bin/sh
+        - -c
+        - "apk add btrfs-progs && (btrfs subvolume delete /srv/slskd; btrfs subvolume snapshot /srv/Music /srv/slskd)"
+        volumeMounts:
+        - name: apk-cache
+          mountPath: /etc/apk/cache
+        - name: srv
+          mountPath: /srv
       - name: gluetun
         image: ghcr.io/qdm12/gluetun:v3.41.1@sha256:1a5bf4b4820a879cdf8d93d7ef0d2d963af56670c9ebff8981860b6804ebc8ab
         restartPolicy: Always
@@ -30,6 +50,12 @@ spec:
             name: gluetun
         lifecycle:
           stopSignal: SIGKILL
+        readinessProbe:
+          httpGet:
+            port: 9999
+          periodSeconds: 5
+          timeoutSeconds: 5
+          initialDelaySeconds: 10
         securityContext:
           runAsUser: 0
           capabilities:
@@ -60,6 +86,11 @@ spec:
         - name: srv
           subPath: downloads
           mountPath: /srv/downloads
+        - name: srv
+          subPath: slskd
+          mountPath: /srv/Music
+          readOnly: true
+          recursiveReadOnly: IfPossible
         - name: config
           mountPath: /config
         - name: data
@@ -76,6 +107,9 @@ spec:
       - name: config
         configMap:
           name: slskd
+      - name: apk-cache
+        persistentVolumeClaim:
+          claimName: apk-cache
   volumeClaimTemplates:
   - metadata:
       name: data
