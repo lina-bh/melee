@@ -18,13 +18,13 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: tailscale
+      version: "v1.94.2"
   releaseName: tailscale-operator
   targetNamespace: tailscale
   values:
     operatorConfig:
       image:
         repository: ghcr.io/tailscale/k8s-operator
-        tag: latest
       hostname: "melee-k8s"
     proxyConfig:
       image:
