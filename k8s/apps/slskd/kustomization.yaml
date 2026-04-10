@@ -5,7 +5,6 @@ labels:
     app: slskd
 resources:
 - statefulset_controller.yaml
-- statefulset_agent.yaml
 - svc_frontend.yaml
 - svc_controller.yaml
 - ingress.yaml
@@ -14,7 +13,6 @@ resources:
 configMapGenerator:
 - name: slskd
   files:
-  - agent.yml
   - controller.yml
 images:
 - name: slskd

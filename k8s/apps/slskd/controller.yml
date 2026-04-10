@@ -8,7 +8,6 @@ shares:
   filters:
   - '.*/musiclibrary.db$'
   - '.*/.+\.(png|jpg)'
-  - '.*/Fcukers - Ö/.*'
   cache:
     storage_mode: disk
 directories:
@@ -35,14 +34,6 @@ groups:
     - mirko72
     - teovader
     - newbt
-instance_name: controller
-relay:
-  enabled: true
-  mode: controller
-  agents:
-    agent:
-      instance_name: agent
-      secret: 4RSjR7IRfs95ZbR47xLYAL
 metrics:
   enabled: true
   authentication:
