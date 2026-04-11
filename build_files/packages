@@ -4,6 +4,7 @@ cockpit-files
 cockpit-machines
 cockpit-networkmanager
 cockpit-storaged
+ffmpeg
 git-core
 htop
 ImageMagick
