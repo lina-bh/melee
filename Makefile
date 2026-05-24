@@ -1,6 +1,6 @@
 HOST := melee
 
-ETC := /etc/containers/systemd
+ETC := /etc/containers/systemd /etc/copyparty/copyparty.conf
 
 NAME := ghcr.io/lina-bh/$(HOST)
 TAG := latest
