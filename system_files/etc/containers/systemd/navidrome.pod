@@ -4,3 +4,6 @@ Network=private
 UserNS=host
 ServiceName=navidrome
 Volume=/tmp
+
+[Install]
+WantedBy=multi-user.target

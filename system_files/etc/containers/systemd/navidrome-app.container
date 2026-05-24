@@ -12,6 +12,3 @@ ReadOnly=true
 ReadOnlyTmpfs=false
 User=971:971
 Volume=/data/cache
-
-[Install]
-WantedBy=multi-user.target
