@@ -1,8 +1,12 @@
+aria2
 beets
+bsdtar
 btrfs-progs
+busybox
 cockpit-files
 cockpit-machines
 cockpit-networkmanager
+cockpit-podman
 cockpit-storaged
 ffmpeg
 git-core
@@ -22,3 +26,4 @@ libvirt-daemon-driver-storage-logical
 libvirt-nss
 udisks2-btrfs
 udisks2-lvm2
+unzip
