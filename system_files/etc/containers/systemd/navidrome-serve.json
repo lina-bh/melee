@@ -1,0 +1,16 @@
+{
+  "TCP": {
+    "443": {
+      "HTTPS": true
+    }
+  },
+  "Web": {
+    "n.lamancha-alhena.ts.net:443": {
+      "Handlers": {
+        "/": {
+          "Proxy": "unix:/tmp/navidrome.sock"
+        }
+      }
+    }
+  }
+}

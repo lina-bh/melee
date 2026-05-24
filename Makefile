@@ -1,6 +1,6 @@
 HOST := melee
 
-ETC := /etc/containers/systemd /etc/beets/config.yaml /etc/transmission-daemon/settings.json /etc/cockpit/cockpit.conf
+ETC := /etc/containers/systemd
 
 NAME := ghcr.io/lina-bh/$(HOST)
 TAG := latest

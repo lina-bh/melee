@@ -1,0 +1,6 @@
+[Pod]
+HostName=n
+Network=private
+UserNS=host
+ServiceName=navidrome
+Volume=/tmp
