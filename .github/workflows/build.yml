@@ -9,7 +9,7 @@ on:
       - build_files
       - system_files
   schedule:
-    - cron: "0 0 * * *" # daily at midnight
+    - cron: "0 0 * * */2" # midnight every 2 days
   workflow_dispatch:
 jobs:
   build:
