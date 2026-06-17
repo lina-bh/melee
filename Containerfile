@@ -22,15 +22,6 @@ RUN --mount=type=cache,destination=/var/cache \
     --mount=type=tmpfs,destination=/var/log \
     dnf5 -y --setopt=install_weak_deps=False install $(cat /tmp/packages)
 
-ENV KUBERNETES_RELEASE=1.35
-RUN --mount=type=cache,destination=/var/cache \
-    --mount=type=cache,destination=/var/lib/dnf \
-    --mount=type=tmpfs,destination=/var/log \
-    dnf5 -y install \
-        "cri-o${KUBERNETES_RELEASE}" \
-        "kubernetes${KUBERNETES_RELEASE}-kubeadm" \
-        helm
-
 COPY ./system_files/ /
 
 RUN bootc container lint
