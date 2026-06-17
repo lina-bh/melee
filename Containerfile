@@ -22,6 +22,13 @@ RUN --mount=type=cache,destination=/var/cache \
     --mount=type=tmpfs,destination=/var/log \
     dnf5 -y --setopt=install_weak_deps=False install $(cat /tmp/packages)
 
+COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
+RUN --mount=type=cache,destination=/var/cache \
+    --mount=type=tmpfs,destination=/var/log \
+    systemctl preset brew-setup.service && \
+    systemctl preset brew-update.timer && \
+    systemctl preset brew-upgrade.timer
+
 COPY ./system_files/ /
 
 RUN bootc container lint
