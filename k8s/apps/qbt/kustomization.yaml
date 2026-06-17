@@ -1,0 +1,8 @@
+labels:
+- pairs:
+    app: qbittorrent
+  includeSelectors: true
+resources:
+- statefulset.yaml
+- service.yaml
+- ingress.yaml
