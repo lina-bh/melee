@@ -1,6 +1,6 @@
 HOST := melee
 
-ETC := /etc/containers/systemd /etc/copyparty/copyparty.conf
+ETC := /etc/containers/systemd /etc/copyparty/copyparty.conf /var/lib/navidrome/navidrome.toml /var/lib/slskd/slskd.yml
 
 NAME := ghcr.io/lina-bh/$(HOST)
 TAG := latest

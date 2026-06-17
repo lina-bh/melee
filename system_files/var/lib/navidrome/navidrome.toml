@@ -1,0 +1,16 @@
+DefaultTheme = "Spotify-ish"
+EnableCoverAnimation = false
+EnableInsightsCollector = false
+EnableSharing = true
+EnableTranscodingConfig = true
+UILoginBackgroundUrl = ""
+LogLevel = "debug"
+Address = "unix:/tmp/navidrome/navidrome.sock"
+UnixSocketPerm = "0666"
+
+[ExtAuth]
+UserHeader = "Tailscale-User-Login"
+TrustedSources = "@"
+
+[Scanner]
+PurgeMissing = "never"

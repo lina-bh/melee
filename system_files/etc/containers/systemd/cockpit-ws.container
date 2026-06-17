@@ -10,9 +10,6 @@ Exec=--address=127.0.0.1
 Image=quay.io/cockpit/ws:359@sha256:0619ba9b58e014547b0ad2e56f6e3b797591fb391978d2671a02c937e23fbd0e
 Mount=type=bind,source=/,destination=/host,bind-propagation=rslave
 Network=host
-NoNewPrivileges=true
-PublishPort=127.0.0.1:9090:9090/tcp
-PodmanArgs=--no-hosts=false
 SecurityLabelDisable=true
 StopSignal=SIGKILL
 
@@ -21,4 +18,4 @@ ExecStartPost=-/usr/bin/tailscale serve --bg --yes https+insecure://localhost:90
 SuccessExitStatus=0 137
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

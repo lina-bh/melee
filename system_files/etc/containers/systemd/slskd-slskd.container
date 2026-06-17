@@ -1,0 +1,15 @@
+[Unit]
+After=var-srv.mount
+Requires=gluetun-slskd.service
+
+[Container]
+Entrypoint=["/slskd/slskd"]
+Image=ghcr.io/slskd/slskd:latest
+Mount=type=bind,source=/srv/Music,destination=/srv/Music,relabel=shared,readonly=true
+Mount=type=bind,source=/srv/downloads,destination=/srv/downloads,relabel=shared
+Mount=type=bind,source=/var/lib/slskd,destination=/app,relabel=private,chown=true
+Pod=slskd.pod
+PodmanArgs=--umask=002
+Secret=slskd_user,type=env,target=SLSKD_SLSK_USERNAME
+Secret=slskd_pass,type=env,target=SLSKD_SLSK_PASSWORD
+User=969:995

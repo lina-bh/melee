@@ -1,0 +1,8 @@
+[Container]
+Environment=TS_SERVE_CONFIG=/serve.json
+Environment=TS_HOSTNAME=srv
+Mount=type=volume,source=tailscale-copyparty.volume,destination=/var/lib/tailscale,chown=true
+Mount=type=bind,source=./serve/copyparty.json,destination=/serve.json,readonly=true,relabel=private
+Secret=tskey-auth,type=env,target=TS_AUTHKEY
+Pod=copyparty.pod
+User=99:99

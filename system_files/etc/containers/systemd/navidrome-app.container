@@ -9,6 +9,5 @@ Mount=type=bind,source=/srv/Music,destination=/music,relabel=shared,readonly=tru
 Mount=type=bind,source=/var/lib/navidrome,destination=/data,chown=true,relabel=private
 Pod=navidrome.pod
 ReadOnly=true
-ReadOnlyTmpfs=false
 User=971:971
 Volume=/data/cache
