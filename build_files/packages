@@ -7,6 +7,7 @@ emacs-nw
 gcc
 git-core
 intel-gpu-firmware
+man-db
 rsync
 libvirt-daemon-driver-storage-logical
 libvirt-nss
