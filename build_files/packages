@@ -3,6 +3,8 @@ cockpit-files
 cockpit-machines
 cockpit-networkmanager
 cockpit-podman
+gcc
+git-core
 intel-gpu-firmware
 rsync
 libvirt-daemon-driver-storage-logical
