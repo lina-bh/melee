@@ -26,18 +26,16 @@
     {
       "matchDatasources": [
         "docker",
-        "kubernetes",
-        "kustomize",
         "github-actions"
       ],
       "pinDigests": true
     }
   ],
-  "kubernetes": {
+  "prHourlyLimit": 0,
+  "quadlet": {
     "managerFilePatterns": [
-      "/^system_files/etc/kubernetes/manifests/.+\\.yaml$/",
-      "/^apps/.+\\.ya?ml$/"
+      "/^system_files\\/etc\\/containers\\/systemd\\/.+\\.container/",
+      "/^system_files\\/etc\\/containers\\/systemd\\/.+\\.container.d\\/.+\\.conf/"
     ]
-  },
-  "prHourlyLimit": 0
+  }
 }
