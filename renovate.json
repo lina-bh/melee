@@ -5,6 +5,13 @@
   ],
   "packageRules": [
     {
+      "matchPackageNames": [
+        "quay.io/fedora/fedora-iot"
+      ],
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
       "matchDatasources": [
         "docker"
       ],
