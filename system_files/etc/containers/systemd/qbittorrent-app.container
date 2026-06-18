@@ -1,5 +1,4 @@
 [Unit]
-After=var-srv.mount gluetun-qbittorrent.service
 Requires=gluetun-qbittorrent.service
 
 [Container]

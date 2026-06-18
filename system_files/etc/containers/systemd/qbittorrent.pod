@@ -2,3 +2,6 @@
 HostName=q
 ServiceName=qbittorrent
 UserNS=auto:uidmapping=968:968:1,gidmapping=995:995:1
+
+[Install]
+WantedBy=default.target

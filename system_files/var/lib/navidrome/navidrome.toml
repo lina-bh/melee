@@ -5,12 +5,12 @@ EnableSharing = true
 EnableTranscodingConfig = true
 UILoginBackgroundUrl = ""
 LogLevel = "debug"
-Address = "unix:/tmp/navidrome/navidrome.sock"
+Address = "127.0.0.1"
 UnixSocketPerm = "0666"
 
 [ExtAuth]
 UserHeader = "Tailscale-User-Login"
-TrustedSources = "@"
+TrustedSources = "127.0.0.1/8,100.64.0.0/10"
 
 [Scanner]
 PurgeMissing = "never"

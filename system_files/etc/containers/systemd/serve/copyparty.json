@@ -8,7 +8,7 @@
     "${TS_CERT_DOMAIN}:443": {
       "Handlers": {
         "/": {
-          "Proxy": "unix:/tmp/socket/party.sock"
+          "Proxy": "http://localhost:3923"
         }
       }
     }

@@ -2,7 +2,6 @@
 ServiceName=copyparty
 UserNS=auto:gidmapping=995:995:1
 PodmanArgs=--uts=host
-Volume=/tmp/socket
 
 [Install]
 WantedBy=default.target

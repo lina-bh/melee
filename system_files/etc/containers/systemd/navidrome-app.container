@@ -1,7 +1,3 @@
-[Unit]
-After=var-srv.mount
-Requires=var-srv.mount
-
 [Container]
 Image=ghcr.io/navidrome/navidrome:latest
 GroupAdd=995
