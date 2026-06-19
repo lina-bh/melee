@@ -36,8 +36,7 @@
   "prHourlyLimit": 0,
   "quadlet": {
     "managerFilePatterns": [
-      "/^system_files\\/etc\\/containers\\/systemd\\/.+\\.container/",
-      "/^system_files\\/etc\\/containers\\/systemd\\/.+\\.container.d\\/.+\\.conf/"
+      "/.+\\.container.d/.+\\.conf$/"
     ]
   }
 }
