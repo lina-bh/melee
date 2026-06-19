@@ -5,6 +5,9 @@
   ],
   "packageRules": [
     {
+      "matchDatasources": [
+        "docker"
+      ],
       "matchPackageNames": [
         "quay.io/fedora/fedora-iot"
       ],
@@ -19,8 +22,7 @@
         "quay.io/fedora/fedora-iot",
         "ghcr.io/ublue-os/brew"
       ],
-      "matchUpdateTypes": ["pin", "pinDigest", "digest"],
-      "pinDigests": true,
+      "matchUpdateTypes": ["digest"],
       "automerge": true
     },
     {
