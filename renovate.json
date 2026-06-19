@@ -19,7 +19,7 @@
         "quay.io/fedora/fedora-iot",
         "ghcr.io/ublue-os/brew"
       ],
-      "enabled": true,
+      "matchUpdateTypes": ["pin", "pinDigest", "digest"],
       "pinDigests": true,
       "automerge": true
     },
