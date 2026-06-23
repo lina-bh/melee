@@ -23,7 +23,8 @@
         "ghcr.io/ublue-os/brew"
       ],
       "matchUpdateTypes": ["digest"],
-      "automerge": true
+      "automerge": true,
+      "automergeType": "branch"
     },
     {
       "matchDatasources": [
