@@ -8,8 +8,6 @@ on:
       - Makefile
       - build_files
       - system_files
-  schedule:
-    - cron: "0 0 * * */2" # midnight every 2 days
   workflow_dispatch:
 jobs:
   build:
