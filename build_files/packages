@@ -3,7 +3,6 @@ cockpit-files
 cockpit-machines
 cockpit-networkmanager
 cockpit-podman
-emacs-nw
 gcc
 git-core
 intel-gpu-firmware
