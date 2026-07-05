@@ -1,4 +1,4 @@
-FROM quay.io/fedora/fedora-iot:44@sha256:7e0a04bf67999a11f2d9e4b896cff3b687b6c432d23e67eedde1d9751d1fb5ef AS fedora
+FROM quay.io/fedora/fedora-iot:44@sha256:d7668ee998cd18e296241944fa072e893649eb79c5834138aed4afd61fac486a AS fedora
 
 RUN --mount=type=cache,destination=/var/cache \
     --mount=type=cache,destination=/var/lib/dnf \
