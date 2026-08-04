@@ -3,7 +3,7 @@ Requires=gluetun-slskd.service
 
 [Container]
 Entrypoint=["/slskd/slskd"]
-Image=ghcr.io/slskd/slskd:0.25.1@sha256:4fe0c6f628efaa9218bf2fa5cc779cac4fe261e74ff617514587af1dc36c8d54
+Image=ghcr.io/slskd/slskd:0.26.0@sha256:161e214a05b51404f6bb6ddd7e60b66ff674a2d8ad28a88dae5b3c1caf9c8c48
 Mount=type=bind,source=/srv/Music,destination=/srv/Music,relabel=shared,readonly=true
 Mount=type=bind,source=/srv/downloads,destination=/srv/downloads,relabel=shared
 Mount=type=bind,source=/var/lib/slskd,destination=/app,relabel=private,chown=true
