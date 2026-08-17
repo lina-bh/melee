@@ -1,0 +1,13 @@
+[Container]
+Environment=ADMIN_USERNAME=admin
+Environment=ADMIN_PASSWORD=admin
+Image=yattee-server.build
+Mount=type=volume,source=yattee-server-data.volume,destination=/app/data
+Network=bridge
+PublishPort=127.0.0.1:8085:8085/tcp
+ReadOnly=true
+Volume=/downloads
+UserNS=auto
+
+[Service]
+ExecStartPost=/usr/bin/tailscale serve --bg --yes --http 8085 http://localhost:8085

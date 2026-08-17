@@ -1,7 +1,0 @@
-[Container]
-Environment=TS_SERVE_CONFIG=/serve.json
-Mount=type=volume,source=tailscale-slskd.volume,destination=/var/lib/tailscale,chown=true
-Mount=type=bind,source=./serve/slskd.json,destination=/serve.json,readonly=true,relabel=private
-Secret=tskey-auth,type=env,target=TS_AUTHKEY
-Pod=slskd.pod
-User=99:99

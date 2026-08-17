@@ -1,5 +1,6 @@
 [Unit]
 Requires=gluetun-qbittorrent.service
+After=gluetun-qbittorrent.service
 
 [Container]
 Image=ghcr.io/qbittorrent/docker-qbittorrent-nox:latest
@@ -14,3 +15,6 @@ ReadOnly=true
 ReadOnlyTmpfs=false
 StopTimeout=20
 User=968:995
+
+[Service]
+ExecStartPost=/usr/bin/tailscale serve --bg --yes --http 8080 http://localhost:8080/
