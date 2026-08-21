@@ -14,3 +14,9 @@ TrustedSources = "127.0.0.1/8,100.64.0.0/10"
 
 [Scanner]
 PurgeMissing = "never"
+
+[Subsonic]
+AppendAlbumVersion = false
+
+[Jellyfin]
+Enabled = true
