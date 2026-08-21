@@ -1,0 +1,19 @@
+[Unit]
+Requires=postgres18.container
+After=postgres18.container
+
+[Container]
+EnvironmentFile=/etc/miniflux.conf
+Image=ghcr.io/miniflux/miniflux@sha256:59e4e31b349f008ecd34b547f23498b1d8abc0c03d5f6d12bdb713ab7f7c04bf
+# 2.3.3-distroless
+Network=postgres18.network
+PublishPort=127.0.0.1:8081:8080/tcp
+ReadOnly=true
+ReadOnlyTmpfs=false
+UserNS=auto
+
+[Service]
+ExecStartPost=/usr/bin/tailscale serve --bg --yes --https 443 --service svc:miniflux http://localhost:8081
+
+[Install]
+WantedBy=default.target
