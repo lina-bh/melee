@@ -24,7 +24,7 @@ RUN --mount=type=cache,destination=/var/cache \
     --mount=type=tmpfs,destination=/run \
     dnf5 -y --setopt=install_weak_deps=False install $(cat /tmp/packages) && rm /tmp/packages
 
-COPY --from=ghcr.io/ublue-os/brew:latest@sha256:bed056871da6edd8c6ee455a274283ae83bf269461dcad758a7729aaad018401 /system_files /
+COPY --from=ghcr.io/ublue-os/brew:latest@sha256:d52b3f578f01623636aff534291b0bd8ff0a0244ef225bf51aecb5fa05a137af /system_files /
 RUN --mount=type=cache,destination=/var/cache \
     --mount=type=tmpfs,destination=/var/log \
     systemctl preset brew-setup.service && \
