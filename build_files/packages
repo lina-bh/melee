@@ -11,5 +11,7 @@ python3-packaging
 python3-pip
 rsync
 libvirt-daemon-driver-storage-logical
+libvirt-daemon-proxy
 libvirt-nss
+netcat
 udisks2
