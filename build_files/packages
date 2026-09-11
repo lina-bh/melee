@@ -7,6 +7,8 @@ gcc
 git-core
 intel-gpu-firmware
 man-db
+python3-packaging
+python3-pip
 rsync
 libvirt-daemon-driver-storage-logical
 libvirt-nss
