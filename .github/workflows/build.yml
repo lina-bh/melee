@@ -21,7 +21,7 @@ jobs:
       NAME: ghcr.io/${{ github.repository }}
     steps:
     - name: Log in to ghcr.io
-      uses: redhat-actions/podman-login@v1
+      uses: redhat-actions/podman-login@v2
       with:
         username: ${{ github.actor }}
         password: ${{ github.token }}
