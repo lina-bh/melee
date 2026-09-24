@@ -18,7 +18,7 @@ build:
 
 .PHONY: push
 push:
-	$(DOCKER) push --format=oci $(NAME):$(TAG)
+	$(DOCKER) push --format=oci --compression-format=zstd:chunked --compression-level=2 $(NAME):$(TAG)
 
 .PHONY: tag
 tag:
