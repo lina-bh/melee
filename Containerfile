@@ -12,8 +12,8 @@ RUN --mount=type=cache,destination=/var/cache \
     curl -fL https://pkgs.tailscale.com/stable/fedora/tailscale.repo -o /etc/yum.repos.d/tailscale.repo && \
     sed -i 's/^enabled=1/enabled=0/' /etc/yum.repos.d/tailscale.repo
 
-RUN rm -r /opt && mkdir -p /var/opt && ln -s /var/opt /opt && \
-    rm -r /usr/local && mkdir -p /var/usrlocal && ln -s /var/usrlocal /usr/local && \
+RUN rm -r /opt && mkdir -p /var/opt && ln -rs /var/opt /opt && \
+    rm -r /usr/local && mkdir -p /var/usrlocal && ln -rs /var/usrlocal /usr/local && \
     setsebool -P container_use_dri_devices=1 container_use_devices=1
 
 COPY ./build_files/packages /tmp/packages
