@@ -6,8 +6,8 @@ on:
       - .github/workflows/build.yml
       - Containerfile
       - Makefile
-      - build_files
-      - system_files
+      - build_files/**/*
+      - system_files/**/*
   workflow_dispatch:
 jobs:
   build:
