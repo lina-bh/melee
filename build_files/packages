@@ -37,6 +37,9 @@ nss-altfiles
 openssh-server
 python3-packaging
 python3-pip
+qemu-char-spice
+qemu-device-display-virtio-vga
+qemu-device-usb-redirect
 realtek-firmware
 rsync
 setools-console
