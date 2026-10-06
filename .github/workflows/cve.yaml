@@ -14,7 +14,7 @@ jobs:
     - id: check-upgrade
       name: dnf check-upgrade --security
       run: |
-        rc=255
+        rc=0
         podman run --rm --entrypoint= "ghcr.io/${{ github.repository }}:latest" dnf5 check-upgrade --refresh --security || rc="$?"
         if [ "$rc" -eq 0 ]; then
           exit 0
