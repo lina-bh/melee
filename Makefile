@@ -19,8 +19,7 @@ build:
 		--no-hosts \
 		--arch=amd64 \
 		--tag=$(NAME):latest \
-		--layers=true \
-		--cache-from=$(NAME) \
+		--pull=newer \
 		--label=org.opencontainers.image.version="$(shell git log -n1 --oneline --no-decorate)" \
 		--label=org.opencontainers.image.revision="$(shell git rev-parse HEAD)" \
 		--annotation=org.opencontainers.image.version="$(shell git log -n1 --oneline --no-decorate)" \

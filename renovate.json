@@ -11,12 +11,6 @@
       "matchPackageNames": [
         "quay.io/fedora/fedora-iot"
       ],
-      "matchUpdateTypes": [
-        "major"
-      ],
-      "schedule": [
-        "* 0 * * */3"
-      ],
       "enabled": false
     },
     {
@@ -24,7 +18,6 @@
         "docker"
       ],
       "matchPackageNames": [
-        "quay.io/fedora/fedora-iot",
         "ghcr.io/ublue-os/brew"
       ],
       "matchUpdateTypes": [
@@ -51,7 +44,6 @@
         "docker"
       ],
       "matchPackageNames": [
-        "quay.io/fedora/fedora-iot",
         "ghcr.io/ublue-os/brew",
         "ghcr.io/slskd/slskd",
         "quay.io/cockpit/ws"
