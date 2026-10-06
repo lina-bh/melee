@@ -6,9 +6,6 @@ cockpit-files
 cockpit-machines
 cockpit-networkmanager
 cockpit-podman
-containernetworking-plugins
-cri-o1.36
-crun
 cryptsetup
 dnf5-plugins
 dracut-config-generic
@@ -25,13 +22,9 @@ intel-gpu-firmware
 iproute
 iptables-nft
 iwlwifi-mvm-firmware
-libvirt-daemon-driver-storage-logical
-libvirt-daemon-proxy
-libvirt-nss
 linux-firmware
 lvm2
 man-db
-netcat
 nfs-utils
 nss-altfiles
 openssh-server
