@@ -1,5 +1,5 @@
 [Container]
-Image=ghcr.io/openbao/openbao:2.6
+Image=ghcr.io/openbao/openbao:2.7
 Volume=/etc/openbao.d:/openbao/config:ro,U,Z,noexec
 Volume=/var/lib/openbao:/var/lib/openbao:U,Z,noexec
 User=963
