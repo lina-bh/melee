@@ -3,7 +3,7 @@ Requires=gluetun-qbittorrent.service
 After=gluetun-qbittorrent.service
 
 [Container]
-Image=ghcr.io/home-operations/sonarr:4
+Image=ghcr.io/home-operations/sonarr:5
 Pod=qbittorrent.pod
 ReadOnly=true
 Volume=sonarr.volume:/config:U
