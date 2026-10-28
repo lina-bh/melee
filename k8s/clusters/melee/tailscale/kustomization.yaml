@@ -1,7 +1,0 @@
----
-namespace: tailscale
-resources:
-- ../../../apps/tailscale
-patches:
-- path: configs.yaml
-- path: operator.yaml

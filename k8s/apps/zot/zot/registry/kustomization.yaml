@@ -1,6 +1,0 @@
----
-resources:
-- ../base
-- ingress.yaml
-patches:
-- path: helmrelease.yaml

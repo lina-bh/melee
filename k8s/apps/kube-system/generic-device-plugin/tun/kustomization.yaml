@@ -1,9 +1,0 @@
----
-resources:
-- ../base
-configMapGenerator:
-- name: generic-device-plugin
-  files:
-  - config.yaml
-  options:
-    disableNameSuffixHash: true

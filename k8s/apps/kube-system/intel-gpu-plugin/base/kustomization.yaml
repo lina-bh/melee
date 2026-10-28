@@ -1,6 +1,0 @@
----
-namespace: kube-system
-resources:
-- gitrepository.yaml
-- fluxtomisation_nfr.yaml
-- fluxtomisation_plugin.yaml

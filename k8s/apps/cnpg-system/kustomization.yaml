@@ -1,5 +1,0 @@
----
-namespace: cnpg-system
-resources:
-- cloudnative-pg
-- namespace.yaml
